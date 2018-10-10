@@ -82,7 +82,6 @@ namespace SeizedPixels.DotCollect.GameCore
                 MobileUtils.ShareText("I've reached " + _score +
                                       " points in DotCollect! Can you beat me? Download the game at [URL]");
             });
-            
         }
 
         private void Update()
@@ -90,11 +89,12 @@ namespace SeizedPixels.DotCollect.GameCore
             if (Input.touchCount > 0)
             {
                 if (State == GameState.Ingame)
-                    transform.Rotate(0, 0, (Input.GetTouch(0).position.x < _screenMiddle ? Speed : -Speed) * Time.deltaTime);
+                    transform.Rotate(0, 0,
+                        (Input.GetTouch(0).position.x < _screenMiddle ? Speed : -Speed) * Time.deltaTime);
                 else if (State == GameState.Pregame && Input.GetTouch(0).phase == TouchPhase.Began)
                     StartGame();
             }
-            else if(Input.GetMouseButton(0))
+            else if (Input.GetMouseButton(0))
             {
                 if (State == GameState.Ingame)
                     transform.Rotate(0, 0, (Input.mousePosition.x < _screenMiddle ? Speed : -Speed) * Time.deltaTime);
@@ -111,14 +111,14 @@ namespace SeizedPixels.DotCollect.GameCore
             _dotCollector.DOFade(1, 0.5f);
             State = GameState.Ingame;
         }
-        
+
         private IEnumerator Restart()
         {
             if (State == GameState.Pregame || State == GameState.Aftergame)
             {
                 Score = 0;
                 Speed = _startSpeed;
-                
+
                 foreach (var dotSpawner in _spawners)
                 {
                     dotSpawner.ResetSpawner();
@@ -128,11 +128,11 @@ namespace SeizedPixels.DotCollect.GameCore
                 _scoreText.CrossFadeAlpha(1, 0.5f, false);
                 CrossFadeButtons(0, 0.5f);
                 EnableGameObjects(_shareButton, _restartButton);
-                
+
                 State = GameState.Ingame;
-                
+
                 yield return new WaitForSeconds(0.5f);
-                
+
                 foreach (var dotSpawner in _spawners)
                 {
                     dotSpawner.DoSpawn = true;

@@ -32,14 +32,15 @@ namespace SeizedPixels.DotCollect.GameCore
                     spawnPosX = Random.Range(bounds.min.x, bounds.max.x);
                 }
 
-                Transform dot = Instantiate(Dot, new Vector3(spawnPosX, transform.position.y, transform.position.z), Quaternion.identity).transform;
+                Transform dot = Instantiate(Dot, new Vector3(spawnPosX, transform.position.y, transform.position.z),
+                    Quaternion.identity).transform;
                 dot.parent = _dotParent;
                 _previousSpawnPosX = spawnPosX;
             }
 
             double cooldown = 0.4 + 0.7 * Math.Pow(1 - 0.02, PlayerController.Instance.Score);
             yield return new WaitForSeconds(Random.Range((float) (cooldown - 0.15), (float) (cooldown + 0.15)));
-            
+
             StartCoroutine(SpawnDots());
         }
 
