@@ -60,11 +60,11 @@ namespace SeizedPixels.DotCollect.GameCore
 
             for (int i = 0; i < sizeCount; i += 2)
             {
-                Add(sizes[i + 1], sizes[i]);
+                Add(sizes[i]);
             }
         }
 
-        private void Add(float gapSize, float size)
+        private void Add(float size)
         {
             Create(_previous, size);
             _previous += _gapSize + size;
