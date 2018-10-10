@@ -790,7 +790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4677c2fd4c754a91ba3d69541c09b42b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minSize: 0.23
+  _minSize: 0.25
   _maxSize: 0.4
   _segmentFactor: 3
   _density: 10
