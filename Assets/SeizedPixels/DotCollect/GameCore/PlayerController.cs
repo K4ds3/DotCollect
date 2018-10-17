@@ -28,6 +28,8 @@ namespace SeizedPixels.DotCollect.GameCore
         private float _startSpeed;
         private int _score;
 
+        private readonly string _gameUrl = "https://play.google.com/store/apps/details?id=de.seizedpixels.dotcapture";
+
         [HideInInspector] public GameState State = GameState.Pregame;
         public float Speed = 110;
         public AudioClip CollectSound;
@@ -78,9 +80,8 @@ namespace SeizedPixels.DotCollect.GameCore
             _restartButton.onClick.AddListener(() => { StartCoroutine(Restart()); });
             _shareButton.onClick.AddListener(() =>
             {
-                //TODO: INSERT URL
                 MobileUtils.ShareText("I've reached " + _score +
-                                      " points in DotCollect! Can you beat me? Download the game at [URL]");
+                                      " points in DotCollect! Can you beat me? Download the game at " + _gameUrl);
             });
         }
 
