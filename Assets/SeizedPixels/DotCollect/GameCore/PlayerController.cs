@@ -81,7 +81,7 @@ namespace SeizedPixels.DotCollect.GameCore
             _shareButton.onClick.AddListener(() =>
             {
                 MobileUtils.ShareText("I've reached " + _score +
-                                      " points in DotCollect! Can you beat me? Download the game at " + _gameUrl);
+                                      " points in DotCapture! Can you beat me? Download the game at " + _gameUrl);
             });
         }
 
